@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "AMGDungeonCrawler"
+	var LibraryId = 0x5cdda54554c49c5c
+	var SourceControlType = ""
+	var ReadOnly = false
+}
