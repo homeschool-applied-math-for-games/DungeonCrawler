@@ -1,0 +1,11 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "AdamPrivateSpacePlace"
+		var ResourceId = 0x5cdda720993d48eb
+		var LoaderType = "Level"
+		var Version = 0
+	}
+}
