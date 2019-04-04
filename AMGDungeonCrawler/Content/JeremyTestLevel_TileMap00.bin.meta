@@ -1,0 +1,13 @@
+[Version:1]
+BinaryContent 
+{
+	BinaryBuilder 
+	{
+		var Name = "JeremyTestLevel_TileMap00"
+		var ResourceId = 0x5cddd8984f927ac0
+		var LoaderType = "TileMapSource"
+		var Version = 0
+		var FilterTag = ""
+		var ResourceOwner = "5cdda2d45f420ff9:JeremyTestLevel"
+	}
+}

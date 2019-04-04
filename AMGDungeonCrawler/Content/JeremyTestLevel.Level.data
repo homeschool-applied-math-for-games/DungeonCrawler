@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 22.1034069
+			var Size = 8.13139629
 		}
 		EditorCameraController 
 		{
@@ -223,7 +223,7 @@ Level
 		var Name = "TileMap"
 		Transform 
 		{
-			var Translation = Real3{0, 0, 0}
+			var Translation = Real3{0.5, 0.5, 0}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, 0, 0, 1}
 		}
@@ -244,9 +244,42 @@ Level
 		}
 		TileMap 
 		{
-			var Source = "null"
+			var Source = "5cddd8984f927ac0:JeremyTestLevel_TileMap00"
 			var PaletteName = "5cdddcc0af13892b:TilePalette"
 			var MeshThickness = 1.20000005
+		}
+	}
+	Cog [ContextId:6]
+	{
+		var Name = "Player"
+		Transform 
+		{
+			var Translation = Real3{0, 0, 0}
+			var Scale = Real3{1, 1, 1}
+			var Rotation = Quaternion{0, 0, 0, 1}
+		}
+		Sprite 
+		{
+			var Visible = true
+			var ViewCulling = true
+			var VisibilityEvents = true
+			var OverrideBoundingBox = false
+			var LocalAabbCenter = Real3{0, 0, 0}
+			var LocalAabbHalfExtents = Real3{1, 1, 1}
+			var GroupSortValue = 0
+			var Material = "582c575af53d18c9:AlphaSprite"
+			var VertexColor = Real4{1, 1, 1, 1}
+			var GeometryMode = SpriteGeometryMode.ZPlane
+			var SpriteSource = "5586f579ca73ecc2:SquareBordered"
+			var FlipX = false
+			var FlipY = false
+			var AnimationActive = true
+			var AnimationSpeed = 1
+			var StartFrame = 0
+		}
+		GridMovement 
+		{
+			var MoveDelay = 0.300000012
 		}
 	}
 }

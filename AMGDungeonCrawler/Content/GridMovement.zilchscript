@@ -1,0 +1,79 @@
+enum FacingDirection
+{
+  Right,
+  Left,
+  Up,
+  Down,
+}
+
+class GridMovement : ZilchComponent
+{
+  [Property]
+  var MoveDelay : Real = 0.3;
+  
+  var Timer : Real = 0.0;
+  
+  var Direction : FacingDirection = FacingDirection.Right;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    this.Timer -= event.Dt;
+  }
+  
+  function MoveRight()
+  {
+    if(this.Timer > 0.0)
+    {
+      return;
+    }
+    
+    var translation = this.Owner.Transform.WorldTranslation;
+    this.Owner.Transform.WorldTranslation = Real3(translation.X + 1, translation.Y, 0);
+    this.Direction = FacingDirection.Right;
+    this.Timer = this.MoveDelay;
+  }
+  
+  function MoveLeft()
+  {
+    if(this.Timer > 0.0)
+    {
+      return;
+    }
+    
+    var translation = this.Owner.Transform.WorldTranslation;
+    this.Owner.Transform.WorldTranslation = Real3(translation.X - 1, translation.Y, 0);
+    this.Direction = FacingDirection.Left;
+    this.Timer = this.MoveDelay;
+  }
+  
+  function MoveUp()
+  {
+    if(this.Timer > 0.0)
+    {
+      return;
+    }
+    
+    var translation = this.Owner.Transform.WorldTranslation;
+    this.Owner.Transform.WorldTranslation = Real3(translation.X , translation.Y + 1, 0);
+    this.Direction = FacingDirection.Up;
+    this.Timer = this.MoveDelay;
+  }
+  
+  function MoveDown()
+  {
+    if(this.Timer > 0.0)
+    {
+      return;
+    }
+    
+    var translation = this.Owner.Transform.WorldTranslation;
+    this.Owner.Transform.WorldTranslation = Real3(translation.X, translation.Y - 1, 0);
+    this.Direction = FacingDirection.Down;
+    this.Timer = this.MoveDelay;
+  }
+}
