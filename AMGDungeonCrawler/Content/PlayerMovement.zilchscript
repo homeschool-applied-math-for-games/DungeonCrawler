@@ -1,0 +1,92 @@
+class PlayerMovement : ZilchComponent
+{
+  
+  
+[Property]
+var MovementSpeed : Real = 10;
+
+[Property]
+  var Idle : SpriteSource = null;
+  
+  [Property] 
+  var Walk : SpriteSource = null;
+
+
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+  
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    this.Move(event.Dt);
+    this.ResetSprite();
+    
+  }
+  
+  function Move (dt : Real)
+  {
+    
+    if(Zero.Keyboard.KeyIsDown(Keys.W))
+    
+     {
+      if(this.Owner.Sprite.SpriteSource != this.Walk)
+       {
+       this.Owner.Sprite.SpriteSource = this.Walk;
+        }
+      this.Owner.GridMovement.MoveUp();
+      
+      
+     }
+
+    if(Zero.Keyboard.KeyIsDown(Keys.S))
+    
+     {
+       if(this.Owner.Sprite.SpriteSource != this.Walk)
+       {
+       this.Owner.Sprite.SpriteSource = this.Walk;
+        }
+      this.Owner.GridMovement.MoveDown();
+      
+      
+     }
+
+    if(Zero.Keyboard.KeyIsDown(Keys.A))
+    
+     {
+       if(this.Owner.Sprite.SpriteSource != this.Walk)
+       {
+       this.Owner.Sprite.SpriteSource = this.Walk;
+        }
+       this.Owner.Sprite.FlipX = true;
+      this.Owner.GridMovement.MoveLeft();
+      
+      
+     }
+     
+     if(Zero.Keyboard.KeyIsDown(Keys.D))
+    
+     {
+       if(this.Owner.Sprite.SpriteSource != this.Walk)
+       {
+       this.Owner.Sprite.SpriteSource = this.Walk;
+        }
+       this.Owner.Sprite.FlipX = false;
+      this.Owner.GridMovement.MoveRight();
+     
+        }
+      
+     }
+
+    
+    function ResetSprite()
+    {
+      if(this.Owner.Sprite.CurrentFrame == 4)
+      {
+        this.Owner.Sprite.SpriteSource = this.Idle;
+      }
+      }
+  }
+  
+

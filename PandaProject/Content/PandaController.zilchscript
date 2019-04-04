@@ -1,0 +1,51 @@
+class PandaController : ZilchComponent
+{
+  // Path to player object
+  [Property]
+  var Player : CogPath = null;
+  
+  // Min distance to player
+  [Property]
+  var StopDistance : Real = 2.0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    var movement = Real3(0, 0, 0);
+    
+    // Check which direction the player is from us
+    var playerDirection = this.Player.Cog.Transform.WorldTranslation
+      - this.Owner.Transform.WorldTranslation;
+      
+    // Find the distance between the player and us
+    var playerDistance = Math.Length(playerDirection);
+    
+    // If we are far enough away from the player
+    if(playerDistance > this.StopDistance)
+    {
+      // If player is to the left
+      if(playerDirection.X < 0.0)
+      {
+        movement.X = -1;
+      }
+        
+      // If player is to the right
+      if(playerDirection.X > 0.0)
+      {
+        movement.X = 1;
+      }
+    }
+    
+    // Jump if player is higher
+    if (playerDirection.Y > 2.0)
+    {
+      this.Owner.SweptController.Jump();
+    }
+    
+    this.Owner.SweptController.Update(movement, event.Dt);
+  }
+}

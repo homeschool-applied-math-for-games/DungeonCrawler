@@ -1,0 +1,68 @@
+class AnimationController : ZilchComponent
+{
+  [Property]
+  var Idle : SpriteSource = null;
+  
+  [Property]
+  var Walk : SpriteSource = null;
+  
+  [Property]
+  var Roll : SpriteSource = null;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    // If the velocity.x is not 0
+    // and we are on the ground
+    if(this.Owner.RigidBody.Velocity.X != 0.0
+      && this.Owner.SweptController.Grounded)
+    {
+      // and we're not already walking
+      if(this.Owner.Sprite.SpriteSource != this.Walk)
+      {
+        // use walk animation
+        this.Owner.Sprite.SpriteSource = this.Walk;
+      }
+      
+      // If the object is moving right
+      if(this.Owner.RigidBody.Velocity.X > 0.0)
+      {
+        // Don't flip sprite on x-axis
+        this.Owner.Sprite.FlipX = false;
+      }
+      // Else (moving left)
+      else
+      {
+        // Flip sprite on x-axis
+        this.Owner.Sprite.FlipX = true;
+      }
+    }
+    // Else if we are not on the ground
+    else if(this.Owner.SweptController.Grounded == false)
+    {
+      // and we're not already rolling
+      if(this.Owner.Sprite.SpriteSource != this.Roll)
+      {
+        // use roll animation
+        this.Owner.Sprite.SpriteSource = this.Roll;
+      }
+      // else if it reaches its last frame (counted from 0 to 6)
+      else if(this.Owner.Sprite.CurrentFrame == 6)
+      {
+        // Set the frame to the fourth frame
+        // (for continuous rolling)
+        this.Owner.Sprite.CurrentFrame = 3;
+      }
+    }
+    // Else
+    else
+    {
+      // Use idle animation
+      this.Owner.Sprite.SpriteSource = this.Idle;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+[Version:1]
+TextContent 
+{
+	ZilchScriptBuilder 
+	{
+		var Name = "PandaController"
+		var ResourceId = 0x5c4c038176198f02
+	}
+}

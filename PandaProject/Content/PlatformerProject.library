@@ -1,0 +1,8 @@
+[Version:1]
+ContentLibrary 
+{
+	var Name = "PlatformerProject"
+	var LibraryId = 0x5c4c1a151e0b634d
+	var SourceControlType = ""
+	var ReadOnly = false
+}
