@@ -1,0 +1,20 @@
+[Version:1]
+BinaryContent 
+{
+	BinaryBuilder 
+	{
+		var Name = "TilePalette"
+		var ResourceId = 0x5cdddcc0af13892b
+		var LoaderType = "TilePaletteSource"
+		var Version = 0
+		var FilterTag = ""
+		var ResourceOwner = ""
+	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"TilePaletteSource"
+		}
+	}
+}
