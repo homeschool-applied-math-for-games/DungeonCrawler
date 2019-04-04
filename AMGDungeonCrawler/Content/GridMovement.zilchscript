@@ -8,11 +8,13 @@ enum FacingDirection
 
 class GridMovement : ZilchComponent
 {
+  [Dependency]
+  var Collider : Collider = null;
+  
   [Property]
   var MoveDelay : Real = 0.3;
   
   var Timer : Real = 0.0;
-  
   var Direction : FacingDirection = FacingDirection.Right;
   
   function Initialize(init : CogInitializer)
@@ -32,8 +34,17 @@ class GridMovement : ZilchComponent
       return;
     }
     
+    var offset = Real3(1,0,0);
     var translation = this.Owner.Transform.WorldTranslation;
-    this.Owner.Transform.WorldTranslation = Real3(translation.X + 1, translation.Y, 0);
+    
+    // Verify that destination is valid
+    if(!this.CheckMove(offset))
+    {
+      return;
+    }
+    
+    // Move and update facing direction
+    this.Owner.Transform.WorldTranslation = translation + offset;
     this.Direction = FacingDirection.Right;
     this.Timer = this.MoveDelay;
   }
@@ -45,8 +56,17 @@ class GridMovement : ZilchComponent
       return;
     }
     
+    var offset = Real3(-1,0,0);
     var translation = this.Owner.Transform.WorldTranslation;
-    this.Owner.Transform.WorldTranslation = Real3(translation.X - 1, translation.Y, 0);
+    
+    // Verify that destination is valid
+    if(!this.CheckMove(offset))
+    {
+      return;
+    }
+    
+    // Move and update facing direction
+    this.Owner.Transform.WorldTranslation = translation + offset;
     this.Direction = FacingDirection.Left;
     this.Timer = this.MoveDelay;
   }
@@ -58,8 +78,17 @@ class GridMovement : ZilchComponent
       return;
     }
     
+    var offset = Real3(0,1,0);
     var translation = this.Owner.Transform.WorldTranslation;
-    this.Owner.Transform.WorldTranslation = Real3(translation.X , translation.Y + 1, 0);
+    
+    // Verify that destination is valid
+    if(!this.CheckMove(offset))
+    {
+      return;
+    }
+    
+    // Move and update facing direction
+    this.Owner.Transform.WorldTranslation = translation + offset;
     this.Direction = FacingDirection.Up;
     this.Timer = this.MoveDelay;
   }
@@ -71,9 +100,29 @@ class GridMovement : ZilchComponent
       return;
     }
     
+    var offset = Real3(0,-1,0);
     var translation = this.Owner.Transform.WorldTranslation;
-    this.Owner.Transform.WorldTranslation = Real3(translation.X, translation.Y - 1, 0);
+    
+    // Verify that destination is valid
+    if(!this.CheckMove(offset))
+    {
+      return;
+    }
+    
+    // Move and update facing direction
+    this.Owner.Transform.WorldTranslation = translation + offset;
     this.Direction = FacingDirection.Down;
     this.Timer = this.MoveDelay;
+  }
+  
+  function CheckMove(offset : Real3) : Boolean
+  {
+    var collider = this.Owner.Collider;
+    var filter = CastFilter();
+    filter.IgnoreCog = this.Owner;
+    filter.IgnoreGhost = true;
+    var results = this.Space.PhysicsSpace.CastCollider(offset, this.Collider, filter);
+    //Console.WriteLine(results.Current.ObjectHit.Name);
+    return results.IsEmpty;
   }
 }
