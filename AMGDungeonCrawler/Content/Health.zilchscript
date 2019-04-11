@@ -1,0 +1,23 @@
+class Health : ZilchComponent
+{
+  [Property] 
+  var MaxHealth : Real = 10;
+  
+  var CurrentHealth : Real; 
+  
+  function Initialize(init : CogInitializer)
+  {
+    this.CurrentHealth = this.MaxHealth;
+    Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisonStarted);
+  }
+  
+  function OnCollisonStarted(event : CollisionEvent)
+  {
+    this.CurrentHealth -=1;
+    
+    if(this.CurrentHealth == 0)
+    {
+      this.Owner.Destroy();
+    }
+  }
+}

@@ -1,0 +1,33 @@
+[Version:1]
+Cog 
+{
+	var Name = "Enemy"
+	Transform 
+	{
+		var Translation = Real3{2.38983083, -0.500131428, -2.31051487e-07}
+		var Scale = Real3{1, 1, 1}
+		var Rotation = Quaternion{0, 0, 0, 1}
+	}
+	Sprite 
+	{
+		var Visible = true
+		var ViewCulling = true
+		var VisibilityEvents = true
+		var OverrideBoundingBox = false
+		var LocalAabbCenter = Real3{0, 0, 0}
+		var LocalAabbHalfExtents = Real3{1, 1, 1}
+		var GroupSortValue = 0
+		var Material = "582c575af53d18c9:AlphaSprite"
+		var VertexColor = Real4{1, 0.430000007, 0.430000007, 1}
+		var GeometryMode = SpriteGeometryMode.ZPlane
+		var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
+		var FlipX = false
+		var FlipY = false
+		var AnimationActive = true
+		var AnimationSpeed = 1
+		var StartFrame = 0
+	}
+	EnemyFollow 
+	{
+	}
+}

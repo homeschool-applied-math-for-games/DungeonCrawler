@@ -1,0 +1,34 @@
+class EnemyFollow : ZilchComponent
+{
+  
+  [Property]
+  var Target : CogPath = null;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+    var targetPosition = this.Target.Cog.Transform.WorldTranslation;
+    var myPosition = this.Owner.Transform.WorldTranslation;
+    
+    if(targetPosition.X > myPosition.X)
+    {
+      this.Owner.GridMovement.MoveRight();
+    }
+    else if(targetPosition.X < myPosition.X)
+    {
+      this.Owner.GridMovement.MoveLeft();
+    }
+    if(targetPosition.Y > myPosition.Y)
+    {
+      this.Owner.GridMovement.MoveUp();
+    }
+    else if(targetPosition.Y < myPosition.Y)
+    {
+      this.Owner.GridMovement.MoveDown();
+    }
+  }
+}
