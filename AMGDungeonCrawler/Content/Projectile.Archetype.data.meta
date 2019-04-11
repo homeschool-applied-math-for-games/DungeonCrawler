@@ -1,0 +1,11 @@
+[Version:1]
+DataContent 
+{
+	DataBuilder 
+	{
+		var Name = "Projectile"
+		var ResourceId = 0x5cd4e2635842161b
+		var LoaderType = "Cog"
+		var Version = 0
+	}
+}
