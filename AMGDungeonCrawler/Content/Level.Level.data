@@ -226,8 +226,5 @@ Level
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{1, 1, 1}
 		}
-		Health [LocallyAdded]
-		{
-		}
 	}
 }

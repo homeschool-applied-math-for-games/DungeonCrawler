@@ -4,7 +4,7 @@ Cog
 	var Name = "Player"
 	Transform 
 	{
-		var Translation = Real3{0, 0, 0}
+		var Translation = Real3{0, 1, 0}
 		var Scale = Real3{1, 1, 1}
 		var Rotation = Quaternion{0, 0, 0, 1}
 	}
@@ -33,7 +33,7 @@ Cog
 		var SendsEvents = true
 		var Material = "4de020863e872da8:DefaultPhysicsMaterial"
 		var CollisionGroup = "4e740859314e5515:DefaultGroup"
-		var Offset = Real3{0, 0, 0}
+		var Offset = Real3{0, -0.5, 0}
 		var HalfSize = Real3{0.5, 0.5, 0.5}
 	}
 	RigidBody 
@@ -56,5 +56,9 @@ Cog
 	{
 		var MoveDelay = 0.300000012
 		var Ghost = false
+	}
+	Health 
+	{
+		var MaxHealth = 10
 	}
 }
