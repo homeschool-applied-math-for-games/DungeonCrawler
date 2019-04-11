@@ -4,6 +4,9 @@ class EnemyFollow : ZilchComponent
   [Property]
   var Target : CogPath = null;
   
+  [Property]
+  var AllowedDistance : Real = 0.2;
+  
   function Initialize(init : CogInitializer)
   {
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
