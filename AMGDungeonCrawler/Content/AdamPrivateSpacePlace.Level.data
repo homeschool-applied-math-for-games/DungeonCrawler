@@ -244,6 +244,10 @@ Level
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{1, 1, 1}
 		}
+		ButtonSpawner 
+		{
+			var ArchetypeToSpawn = "5cd4e2635842161b:Projectile"
+		}
 		Hierarchy 
 		{
 			Cog [Id:0x5c4e21be5dbf3c03][LocallyAdded][ContextId:8]

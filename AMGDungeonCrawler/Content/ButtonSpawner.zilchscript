@@ -1,5 +1,6 @@
 class ButtonSpawner : ZilchComponent
 {
+  [Property] var ArchetypeToSpawn : Archetype = null;
   function Initialize(init : CogInitializer)
   {
     Zero.Connect(Zero.Keyboard, Events.KeyDown, this.OnKeyDown);
@@ -17,8 +18,33 @@ class ButtonSpawner : ZilchComponent
 
     // Pass the archetype and position to the Space to make our object
     var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
+    
 
-    createdBall.RigidBody.Velocity = Real3(0,10,0);
+    if(this.Owner.GridMovement != null)
+    {
+      var direction = this.Owner.GridMovement.Direction;
+      var projectileDirection = Real3(0,0,0);
+      
+      if(direction == FacingDirection.Up)
+      {
+        projectileDirection.Y = 1;
+      }
+      if(direction == FacingDirection.Down)
+      {
+        projectileDirection.Y = -1;
+      }
+      if(direction == FacingDirection.Right)
+      {
+        projectileDirection.X = 1;
+      }
+      if(direction == FacingDirection.Left)
+      {
+        projectileDirection.X = -1;
+      }
+      
+      var speed = 10;
+      createdBall.RigidBody.Velocity = projectileDirection * speed;
+    }
   }
 }
 }
