@@ -226,12 +226,7 @@ Level
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{1, 1, 1}
 		}
-		PlayerMovement 
-		{
-			var Idle = "5c47e90d2ea767dd:Idle_0"
-			var Walk = "5c47e93f17ad685b:Walk"
-		}
-		AnimationController [LocallyRemoved]
+		Health [LocallyAdded]
 		{
 		}
 	}
