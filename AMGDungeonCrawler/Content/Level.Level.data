@@ -231,17 +231,9 @@ Level
 	{
 		Transform 
 		{
-			var Translation = Real3{2.38983083, -0.500131428, -2.31051487e-07}
+			var Translation = Real3{5.0255537, 0, 0}
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{1, 1, 1}
-		}
-		EnemyFollow 
-		{
-			var Target = CogPath
-			{
-				var Path = ":/Player"
-				var Cog = 5
-			}
 		}
 	}
 }
