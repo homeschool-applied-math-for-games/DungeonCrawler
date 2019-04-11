@@ -36,11 +36,6 @@ Cog
 		var Offset = Real3{0, 0, 0}
 		var HalfSize = Real3{0.5, 0.5, 0.5}
 	}
-	AnimationController 
-	{
-		var Idle = "null"
-		var Walk = "5c47e93f17ad685b:Walk"
-	}
 	RigidBody 
 	{
 		var Velocity = Real3{0, 0, 0}
@@ -54,9 +49,12 @@ Cog
 	PlayerMovement 
 	{
 		var MovementSpeed = 10
+		var Idle = "5c47e90d2ea767dd:Idle_0"
+		var Walk = "5c47e93f17ad685b:Walk"
 	}
 	GridMovement 
 	{
 		var MoveDelay = 0.300000012
+		var Ghost = false
 	}
 }
