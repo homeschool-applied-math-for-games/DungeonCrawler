@@ -1,3 +1,6 @@
+// WARNING! For this script to resolve collisions properly, the collider on the 
+// object must be slightly smaller than the space the object actually occupies.
+
 enum FacingDirection
 {
   Right,
@@ -14,8 +17,12 @@ class GridMovement : ZilchComponent
   [Property]
   var MoveDelay : Real = 0.3;
   
+  [Property]
+  var Ghost : Boolean = false;
+  
   var Timer : Real = 0.0;
   var Direction : FacingDirection = FacingDirection.Right;
+  var Dt : Real = 0.0;
   
   function Initialize(init : CogInitializer)
   {
@@ -24,6 +31,7 @@ class GridMovement : ZilchComponent
 
   function OnLogicUpdate(event : UpdateEvent)
   {
+    this.Dt = event.Dt;
     this.Timer -= event.Dt;
   }
   
@@ -117,12 +125,23 @@ class GridMovement : ZilchComponent
   
   function CheckMove(offset : Real3) : Boolean
   {
+    // This object passes through other objects
+    if(this.Ghost)
+    {
+      return true;
+    }
+    
     var collider = this.Owner.Collider;
     var filter = CastFilter();
     filter.IgnoreCog = this.Owner;
     filter.IgnoreGhost = true;
-    var results = this.Space.PhysicsSpace.CastCollider(offset, this.Collider, filter);
-    //Console.WriteLine(results.Current.ObjectHit.Name);
+    filter.IgnoreKinematic = false;
+    filter.IgnoreStatic = false;
+    filter.IgnoreDynamic = false;
+    
+    // CastCollider ignores tile map collisions for some reason, but SweepCollider does not
+    var results = this.Space.PhysicsSpace.SweepCollider(this.Collider, Math.Normalize(offset), this.Dt, filter);
+    
     return results.IsEmpty;
   }
 }
