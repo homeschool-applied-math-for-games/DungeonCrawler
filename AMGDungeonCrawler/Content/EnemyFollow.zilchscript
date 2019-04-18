@@ -17,19 +17,19 @@ class EnemyFollow : ZilchComponent
     var targetPosition = this.Target.Cog.Transform.WorldTranslation;
     var myPosition = this.Owner.Transform.WorldTranslation;
     
-    if(targetPosition.X > myPosition.X)
+    if(targetPosition.X - this.AllowedDistance > myPosition.X)
     {
       this.Owner.GridMovement.MoveRight();
     }
-    else if(targetPosition.X < myPosition.X)
+    else if(targetPosition.X + this.AllowedDistance < myPosition.X)
     {
       this.Owner.GridMovement.MoveLeft();
     }
-    if(targetPosition.Y > myPosition.Y)
+    if(targetPosition.Y - this.AllowedDistance > myPosition.Y)
     {
       this.Owner.GridMovement.MoveUp();
     }
-    else if(targetPosition.Y < myPosition.Y)
+    else if(targetPosition.Y + this.AllowedDistance < myPosition.Y)
     {
       this.Owner.GridMovement.MoveDown();
     }
