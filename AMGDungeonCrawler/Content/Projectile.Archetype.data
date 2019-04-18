@@ -46,4 +46,11 @@ Cog
 		var Offset = Real3{0, 0, 0}
 		var Radius = 0.5
 	}
+	TimedDeath 
+	{
+		var TimeTillDeath = 1
+	}
+	DestroyOnCollide 
+	{
+	}
 }
