@@ -238,16 +238,12 @@ Level
 	}
 	Cog [InheritId:"5cc35c2240af7dfe:BossEnemy"][ContextId:7]
 	{
+		var Name = "BossEnemy"
 		Transform 
 		{
 			var Translation = Real3{5.0255537, 5, 0}
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{5, 5, 1}
-		}
-		BossShoot [LocallyAdded]
-		{
-			var ArchetypeToSpawn = "5cd419fc4df93fda:EnemyProjectile"
-			var TimeTillShoot = 1.5
 		}
 	}
 }

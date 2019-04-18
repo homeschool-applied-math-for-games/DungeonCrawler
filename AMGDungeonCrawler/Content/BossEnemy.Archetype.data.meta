@@ -8,4 +8,12 @@ DataContent
 		var LoaderType = "Cog"
 		var Version = 0
 	}
+	ContentTags 
+	{
+		var Tags = Array
+		{
+			"Archetype"
+			"Cog"
+		}
+	}
 }
