@@ -3,17 +3,39 @@ class Health : ZilchComponent
   [Property] 
   var MaxHealth : Real = 10;
   
+  [Property]
+  var TimeBetweenAttacks : Real = 2;
+  
+  var Timer : Real = 0;
+  
   var CurrentHealth : Real; 
   
   function Initialize(init : CogInitializer)
   {
+    
+    this.Timer = this.TimeBetweenAttacks;
+    
     this.CurrentHealth = this.MaxHealth;
-    Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisonStarted);
+    Zero.Connect(this.Owner, Events.CollisionPersisted, this.OnCollisonPersisted);
   }
   
-  function OnCollisonStarted(event : CollisionEvent)
+  function OnLogicUpdate (event : UpdateEvent)
   {
-    this.CurrentHealth -=1;
+    this.Timer -= event.Dt;
+  }
+  
+  function OnCollisonPersisted(event : CollisionEvent)
+  {
+    if(this.Owner.Name == "Player" && event.OtherObject.Name == "Enemy")
+    {
+      return;
+    }
+    if(this.Timer <= 0)
+    {
+      this.CurrentHealth -=1;
+      this.Timer = this.TimeBetweenAttacks;
+    }
+    
     
     if(this.CurrentHealth == 0)
     {
