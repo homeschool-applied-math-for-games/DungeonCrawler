@@ -77,7 +77,7 @@ Level
 		var Name = "EditorCamera"
 		Transform 
 		{
-			var Translation = Real3{8.81246853, 42.8475037, 20}
+			var Translation = Real3{32.6655693, 76.1694336, 20}
 			var Scale = Real3{1, 1, 1}
 			var Rotation = Quaternion{0, -1.09278471e-08, 0, 1}
 		}
@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 19.9999905
+			var Size = 49.9160309
 		}
 		EditorCameraController 
 		{
@@ -139,86 +139,11 @@ Level
 			var LookDistance = 20
 			var VerticalAngle = 0
 			var HorizontalAngle = 0
-			var LookTarget = Real3{8.81246853, 42.8475037, 0}
+			var LookTarget = Real3{32.6655693, 76.1694336, 0}
 			var MoveSensitivity = 1
 		}
 	}
 	Cog [ContextId:4]
-	{
-		var Name = "GameCamera"
-		Transform 
-		{
-			var Translation = Real3{0, 0, 10}
-			var Scale = Real3{1, 1, 1}
-			var Rotation = Quaternion{0, 0, 0, 1}
-		}
-		SelectionIcon 
-		{
-			var Visible = true
-			var VisibilityEvents = true
-			var Material = "56581e2bb81777be:DebugDrawOnTop"
-			var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
-			var ViewScale = 1
-			var OverrideSelections = true
-		}
-		CameraViewport 
-		{
-			var RenderInEditor = false
-			var RenderInGame = true
-			var RenderOrder = 0
-			var CameraPath = CogPath
-			{
-				var Path = "."
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var Cog = 4
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var RendererPath = CogPath
-			{
-				var Path = ":/Renderer"
-				var ErrorOnResolveToNull = false
-				var ErrorOnPathCantCompute = false
-				var ErrorOnDirectLinkFail = false
-				var UpdateCogOnPathChange = true
-				var UpdatePathOnCogChange = true
-				var UpdateCogOnInitialize = true
-				var ResolvedNullErrorOccurred = false
-				var Cog = 2
-				var PathPreference0 = CogPathPreference.CogRelative
-				var PathPreference1 = CogPathPreference.SpaceRelative
-				var PathPreference2 = CogPathPreference.Absolute
-			}
-			var ResolutionOrAspect = Integer2{1920, 1080}
-			var RenderToViewport = true
-			var ForwardViewportEvents = false
-			var ViewportScaling = ViewportScaling.Letterbox
-			var MarginColor = Real4{0, 0, 0, 1}
-			var NormalizedSize = Real2{1, 1}
-			var NormalizedOffset = Real2{0, 0}
-		}
-		Camera 
-		{
-			var NearPlane = 0.100000001
-			var FarPlane = 200
-			var PerspectiveMode = PerspectiveMode.Orthographic
-			var FieldOfView = 60
-			var Size = 20
-		}
-		SoundListener 
-		{
-			var Active = true
-			var AttenuationScale = 1
-		}
-	}
-	Cog [ContextId:5]
 	{
 		var Name = "WallsTileMap"
 		Transform 
@@ -249,7 +174,7 @@ Level
 			var MeshThickness = 1.20000005
 		}
 	}
-	Cog [ContextId:6]
+	Cog [ContextId:5]
 	{
 		var Name = "FloorTileMap"
 		Transform 
@@ -280,7 +205,7 @@ Level
 			var MeshThickness = 1.20000005
 		}
 	}
-	Cog [InheritId:"5c47e7d12e2732b2:Player"][ContextId:7]
+	Cog [InheritId:"5c47e7d12e2732b2:Player"][ContextId:6]
 	{
 		Transform 
 		{
@@ -292,6 +217,16 @@ Level
 		{
 			var HalfSize = Real3{0.495000005, 0.495000005, 0.5}
 			var Size = Real3{0.99000001, 0.99000001, 1}
+		}
+		Hierarchy 
+		{
+			Cog [Id:0x5c4e21be5dbf3c03][ContextId:7]
+			{
+				SelectionIcon 
+				{
+					var Visible = false
+				}
+			}
 		}
 	}
 }
