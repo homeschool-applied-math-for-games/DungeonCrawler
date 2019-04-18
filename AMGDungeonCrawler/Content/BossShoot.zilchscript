@@ -22,7 +22,7 @@ class BossShoot : ZilchComponent
     var spawnPosition = this.Owner.Transform.Translation;
 
     // Find the Ball archetype:
-    var archetypeToSpawn = Archetype.Projectile;
+    var archetypeToSpawn = Archetype.EnemyProjectile;
 
     // Pass the archetype and position to the Space to make our object
     var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
