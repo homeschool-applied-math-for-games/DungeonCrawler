@@ -3,9 +3,9 @@ CollisionTable
 {
 	var RegisteredGroups = Array
 	{
+		"5cd418d078b024d6:Player"
 		"4e740859314e5515:DefaultGroup"
-		"5cd4168382b12351:Enemies.CollisionGroup"
-		"5cd41683828feb51:Player.CollisionGroup"
+		"5cd418c67e6a3c87:Enemies"
 	}
 	var CollisionFilters = Array
 	{
@@ -33,8 +33,8 @@ CollisionTable
 		}
 		Object
 		{
-			var TypeA = "5cd41683828feb51:Player.CollisionGroup"
-			var TypeB = "5cd41683828feb51:Player.CollisionGroup"
+			var TypeA = "4e740859314e5515:DefaultGroup"
+			var TypeB = "4e740859314e5515:DefaultGroup"
 			var SkipResolution = false
 			var SkipDetectingCollision = true
 			var StartEvent = false
@@ -44,8 +44,30 @@ CollisionTable
 		}
 		Object
 		{
-			var TypeA = "5cd4168382b12351:Enemies.CollisionGroup"
-			var TypeB = "5cd4168382b12351:Enemies.CollisionGroup"
+			var TypeA = "4e740859314e5515:DefaultGroup"
+			var TypeB = "4e740859314e5515:DefaultGroup"
+			var SkipResolution = false
+			var SkipDetectingCollision = true
+			var StartEvent = false
+			var EndEvent = false
+			var PersistedEvent = false
+			var PreSolveEvent = false
+		}
+		Object
+		{
+			var TypeA = "5cd418c67e6a3c87:Enemies"
+			var TypeB = "5cd418c67e6a3c87:Enemies"
+			var SkipResolution = false
+			var SkipDetectingCollision = true
+			var StartEvent = false
+			var EndEvent = false
+			var PersistedEvent = false
+			var PreSolveEvent = false
+		}
+		Object
+		{
+			var TypeA = "5cd418d078b024d6:Player"
+			var TypeB = "5cd418d078b024d6:Player"
 			var SkipResolution = false
 			var SkipDetectingCollision = true
 			var StartEvent = false
