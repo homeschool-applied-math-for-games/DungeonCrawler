@@ -20,10 +20,12 @@ class EnemyFollow : ZilchComponent
     if(targetPosition.X - this.AllowedDistance > myPosition.X)
     {
       this.Owner.GridMovement.MoveRight();
+       this.Owner.Sprite.FlipX = true;
     }
     else if(targetPosition.X + this.AllowedDistance < myPosition.X)
     {
       this.Owner.GridMovement.MoveLeft();
+       this.Owner.Sprite.FlipX = false;
     }
     if(targetPosition.Y - this.AllowedDistance > myPosition.Y)
     {

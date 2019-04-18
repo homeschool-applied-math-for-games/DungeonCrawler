@@ -5,7 +5,7 @@ Cog
 	Transform 
 	{
 		var Translation = Real3{0, 0, 0}
-		var Scale = Real3{0.400000006, 0.400000006, 0.400000006}
+		var Scale = Real3{0.600000024, 0.600000024, 0.600000024}
 		var Rotation = Quaternion{0, 0, 0, 1}
 	}
 	Sprite 

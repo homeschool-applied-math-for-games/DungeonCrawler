@@ -4,7 +4,7 @@ Cog
 	var Name = "Enemy"
 	Transform 
 	{
-		var Translation = Real3{5.63341522, -0.500131428, -2.31051487e-07}
+		var Translation = Real3{0, 0, 0}
 		var Scale = Real3{1, 1, 1}
 		var Rotation = Quaternion{0, 0, 0, 1}
 	}
@@ -20,7 +20,7 @@ Cog
 		var Material = "582c575af53d18c9:AlphaSprite"
 		var VertexColor = Real4{1, 0.430000007, 0.430000007, 1}
 		var GeometryMode = SpriteGeometryMode.ZPlane
-		var SpriteSource = "58f8e4be7360cf7c:CameraIcon"
+		var SpriteSource = "5cc3321f3b5aaf40:EnemyWalk"
 		var FlipX = false
 		var FlipY = false
 		var AnimationActive = true
@@ -44,6 +44,7 @@ Cog
 			var PathPreference1 = CogPathPreference.SpaceRelative
 			var PathPreference2 = CogPathPreference.Absolute
 		}
+		var AllowedDistance = 0.200000003
 	}
 	SphereCollider 
 	{
