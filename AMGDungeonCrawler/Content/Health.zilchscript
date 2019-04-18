@@ -17,6 +17,7 @@ class Health : ZilchComponent
     
     this.CurrentHealth = this.MaxHealth;
     Zero.Connect(this.Owner, Events.CollisionPersisted, this.OnCollisonPersisted);
+    Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
   }
   
   function OnLogicUpdate (event : UpdateEvent)
@@ -26,20 +27,38 @@ class Health : ZilchComponent
   
   function OnCollisonPersisted(event : CollisionEvent)
   {
+    this.Damage(event);
+  }
+  
+  function OnCollisionStarted(event : CollisionEvent)
+  {
+    this.Damage(event);
+  }
+  
+  function Damage(event : CollisionEvent)
+  {
     if(this.Owner.Name == "Enemy" && event.OtherObject.Name == "Player")
     {
       return;
     }
+    
     if(this.Timer <= 0)
     {
+      Console.WriteLine("`this.Owner.Name` was damaged, has `this.CurrentHealth` health.");
       this.CurrentHealth -=1;
       this.Timer = this.TimeBetweenAttacks;
     }
     
-    
     if(this.CurrentHealth == 0)
     {
-      this.Owner.Destroy();
+      if(this.Owner.Name != "Player")
+      {
+        this.Owner.Destroy();
+      }
+      else
+      {
+        this.Owner.Space.ReloadLevel();
+      }
     }
   }
 }

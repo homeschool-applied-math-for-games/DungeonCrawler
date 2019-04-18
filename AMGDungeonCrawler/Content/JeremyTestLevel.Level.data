@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 10.9762363
+			var Size = 14.8163652
 		}
 		EditorCameraController 
 		{
@@ -257,6 +257,14 @@ Level
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{2.5, 2.5, 1}
 		}
+		GridMovement 
+		{
+			var MoveDelay = 2
+		}
+		Health 
+		{
+			var TimeBetweenAttacks = 0.00999999978
+		}
 	}
 	Cog [InheritId:"5c47e7d12e2732b2:Player"][ContextId:7]
 	{
@@ -275,6 +283,10 @@ Level
 		{
 			var DynamicState = RigidBodyDynamicState.Dynamic
 			var AllowSleep = false
+		}
+		GridMovement 
+		{
+			var MoveDelay = 0.200000003
 		}
 		Health 
 		{
