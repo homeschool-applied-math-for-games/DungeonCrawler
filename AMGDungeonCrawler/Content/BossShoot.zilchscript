@@ -1,0 +1,60 @@
+class BossShoot : ZilchComponent
+{
+  [Property] var ArchetypeToSpawn : Archetype = null;
+  
+  [Property]
+  var TimeTillShoot : Real = 2;
+  
+  var Timer : Real = 0;
+  
+  function Initialize(init : CogInitializer)
+  {
+    this.Timer == this.TimeTillShoot;
+    Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+{
+  this.Timer -= event.Dt;
+  // When space key is pressed
+  if(this.Timer <= 0)
+  {
+    var spawnPosition = this.Owner.Transform.Translation;
+
+    // Find the Ball archetype:
+    var archetypeToSpawn = Archetype.Projectile;
+
+    // Pass the archetype and position to the Space to make our object
+    var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
+    
+
+    if(this.Owner.GridMovement != null)
+    {
+      var direction = this.Owner.GridMovement.Direction;
+      var projectileDirection = Real3(0,0,0);
+      
+      if(direction == FacingDirection.Up)
+      {
+        projectileDirection.Y = 1;
+      }
+      if(direction == FacingDirection.Down)
+      {
+        projectileDirection.Y = -1;
+      }
+      if(direction == FacingDirection.Right)
+      {
+        projectileDirection.X = 1;
+      }
+      if(direction == FacingDirection.Left)
+      {
+        projectileDirection.X = -1;
+      }
+      
+      var speed = 10;
+      createdBall.RigidBody.Velocity = projectileDirection * speed;
+      
+      this.Timer = this.TimeTillShoot;
+    }
+  }
+}
+}
