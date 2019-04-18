@@ -130,7 +130,7 @@ Level
 			var FarPlane = 500
 			var PerspectiveMode = PerspectiveMode.Orthographic
 			var FieldOfView = 45
-			var Size = 14.8163729
+			var Size = 29.8365402
 		}
 		EditorCameraController 
 		{
@@ -225,6 +225,10 @@ Level
 			var Translation = Real3{0, 0, 0}
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{1, 1, 1}
+		}
+		RigidBody 
+		{
+			var AllowSleep = false
 		}
 	}
 	Cog [InheritId:"5cd4152c0bef0518:Enemy"][ContextId:6]

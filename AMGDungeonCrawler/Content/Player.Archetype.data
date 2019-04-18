@@ -41,7 +41,7 @@ Cog
 		var Velocity = Real3{0, 0, 0}
 		var AngularVelocity = Real3{0, 0, 0}
 		var DynamicState = RigidBodyDynamicState.Dynamic
-		var AllowSleep = true
+		var AllowSleep = false
 		var Asleep = false
 		var RotationLocked = true
 		var Mode2D = Mode2DStates.InheritFromSpace
@@ -60,6 +60,7 @@ Cog
 	Health 
 	{
 		var MaxHealth = 10
+		var TimeBetweenAttacks = 2
 	}
 	ButtonSpawner 
 	{
