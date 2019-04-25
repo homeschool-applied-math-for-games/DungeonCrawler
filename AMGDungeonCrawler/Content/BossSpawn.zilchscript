@@ -1,0 +1,27 @@
+class BossSpawn : ZilchComponent
+{
+  
+  [Property]
+  var WhatToSpawn : Archetype;
+  
+  function Initialize(init : CogInitializer)
+  {
+    Zero.Connect(this.Owner, Events.CollisionStarted, this.OnCollisionStarted);
+  }
+
+  function OnLogicUpdate(event : UpdateEvent)
+  {
+  
+  }
+  function OnCollisionStarted(event : CollisionEvent)
+  {
+    if(event.OtherObject.Name == "Player")
+    {
+    var spawnPosition = this.Owner.Transform.Translation;
+
+    this.Space.CreateAtPosition(this.WhatToSpawn, spawnPosition);
+    
+    this.Owner.Destroy();
+  }
+  }
+}

@@ -6,7 +6,7 @@ class BossShoot : ZilchComponent
   var TimeTillShoot : Real = 2;
   
   [Property]
-  var Target : CogPath;
+  var Target : Cog;
   
   var Timer : Real = 0;
   
@@ -14,6 +14,7 @@ class BossShoot : ZilchComponent
   {
     this.Timer == this.TimeTillShoot;
     Zero.Connect(this.Space, Events.LogicUpdate, this.OnLogicUpdate);
+    this.Target = this.Space.FindObjectByName("Player");
   }
 
   function OnLogicUpdate(event : UpdateEvent)
@@ -35,7 +36,7 @@ class BossShoot : ZilchComponent
       var projectileDirection = Real3(0,0,0);
       
       var myLocation = this.Owner.Transform.WorldTranslation;
-      var targetLocation = this.Target.Cog.Transform.WorldTranslation;
+      var targetLocation = this.Target.Transform.WorldTranslation;
       
       projectileDirection = Math.Normalize(targetLocation - myLocation);
       
