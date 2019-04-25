@@ -245,5 +245,13 @@ Level
 			var Rotation = Quaternion{0, 0, 0, 1}
 			var Scale = Real3{5, 5, 1}
 		}
+		BossShoot 
+		{
+			var Target = CogPath
+			{
+				var Path = ":/Player"
+				var Cog = 5
+			}
+		}
 	}
 }

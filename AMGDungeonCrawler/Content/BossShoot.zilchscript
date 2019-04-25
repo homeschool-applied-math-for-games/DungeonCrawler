@@ -5,6 +5,9 @@ class BossShoot : ZilchComponent
   [Property]
   var TimeTillShoot : Real = 2;
   
+  [Property]
+  var Target : CogPath;
+  
   var Timer : Real = 0;
   
   function Initialize(init : CogInitializer)
@@ -28,33 +31,19 @@ class BossShoot : ZilchComponent
     var createdBall = this.Space.CreateAtPosition(archetypeToSpawn, spawnPosition);
     
 
-    if(this.Owner.GridMovement != null)
-    {
-      var direction = this.Owner.GridMovement.Direction;
+    
       var projectileDirection = Real3(0,0,0);
       
-      if(direction == FacingDirection.Up)
-      {
-        projectileDirection.Y = 1;
-      }
-      if(direction == FacingDirection.Down)
-      {
-        projectileDirection.Y = -1;
-      }
-      if(direction == FacingDirection.Right)
-      {
-        projectileDirection.X = 1;
-      }
-      if(direction == FacingDirection.Left)
-      {
-        projectileDirection.X = -1;
-      }
+      var myLocation = this.Owner.Transform.WorldTranslation;
+      var targetLocation = this.Target.Cog.Transform.WorldTranslation;
+      
+      projectileDirection = Math.Normalize(targetLocation - myLocation);
       
       var speed = 10;
       createdBall.RigidBody.Velocity = projectileDirection * speed;
       
       this.Timer = this.TimeTillShoot;
-    }
+    
   }
 }
 }
