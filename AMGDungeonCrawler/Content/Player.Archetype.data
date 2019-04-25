@@ -60,7 +60,7 @@ Cog
 	Health 
 	{
 		var MaxHealth = 10
-		var TimeBetweenAttacks = 2
+		var TimeBetweenAttacks = 0.5
 	}
 	ButtonSpawner 
 	{

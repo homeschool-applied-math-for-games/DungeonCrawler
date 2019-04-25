@@ -138,10 +138,30 @@ class GridMovement : ZilchComponent
     filter.IgnoreKinematic = false;
     filter.IgnoreStatic = false;
     filter.IgnoreDynamic = false;
-    
+    filter.CollisionGroup = this.Collider.CollisionGroup;
+        
     // CastCollider ignores tile map collisions for some reason, but SweepCollider does not
-    var results = this.Space.PhysicsSpace.SweepCollider(this.Collider, Math.Normalize(offset), this.Dt, filter);
+    var results = this.Space.PhysicsSpace.SweepCollider(this.Collider, Math.Normalize(offset), 1.0, filter);
+    var canMove = true;
+    if(!results.IsEmpty)
+    {
+      var myGroup = this.Collider.CollisionGroup;
+      while(results.IsNotEmpty)
+      {
+        var theirGroup = results.Current.OtherCollider.CollisionGroup;
+        var tableFilter = CollisionTable.DamageCollisionTable.FindFilter(theirGroup, myGroup);
+        if(tableFilter == null)
+          tableFilter = CollisionTable.DamageCollisionTable.FindFilter(myGroup, theirGroup);
+
+        if(tableFilter == null || (tableFilter.CollisionFlag == CollisionFilterCollisionFlags.Resolve))
+        {
+          canMove = false;
+          break;
+        }
+        results.MoveNext();
+      }
+    }
     
-    return results.IsEmpty;
+    return canMove;
   }
 }

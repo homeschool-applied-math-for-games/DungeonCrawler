@@ -47,7 +47,7 @@ CollisionTable
 			var TypeA = "4e740859314e5515:DefaultGroup"
 			var TypeB = "4e740859314e5515:DefaultGroup"
 			var SkipResolution = false
-			var SkipDetectingCollision = true
+			var SkipDetectingCollision = false
 			var StartEvent = false
 			var EndEvent = false
 			var PersistedEvent = false
@@ -70,6 +70,17 @@ CollisionTable
 			var TypeB = "5cd418d078b024d6:Player"
 			var SkipResolution = false
 			var SkipDetectingCollision = true
+			var StartEvent = false
+			var EndEvent = false
+			var PersistedEvent = false
+			var PreSolveEvent = false
+		}
+		Object
+		{
+			var TypeA = "5cd418c67e6a3c87:Enemies"
+			var TypeB = "5cd418d078b024d6:Player"
+			var SkipResolution = true
+			var SkipDetectingCollision = false
 			var StartEvent = false
 			var EndEvent = false
 			var PersistedEvent = false
