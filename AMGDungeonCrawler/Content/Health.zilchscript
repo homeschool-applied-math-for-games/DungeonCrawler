@@ -6,6 +6,9 @@ class Health : ZilchComponent
   [Property]
   var TimeBetweenAttacks : Real = 2;
   
+  [Property]
+  var WinLevel : Level = null;
+  
   var Timer : Real = 0;
   
   var CurrentHealth : Real; 
@@ -54,6 +57,11 @@ class Health : ZilchComponent
       if(this.Owner.Name != "Player")
       {
         this.Owner.Destroy();
+        
+        if(this.Owner.Name == "BossEnemy")
+        {
+          this.Space.LoadLevel(this.WinLevel);
+        }
       }
       else
       {

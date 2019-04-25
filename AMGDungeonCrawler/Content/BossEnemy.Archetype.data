@@ -4,7 +4,7 @@ Cog
 	var Name = "BossEnemy"
 	Transform 
 	{
-		var Translation = Real3{0, 0, 0}
+		var Translation = Real3{0, 0.0625, 0}
 		var Scale = Real3{5, 5, 1}
 		var Rotation = Quaternion{0, 0, 0, 1}
 	}
@@ -50,26 +50,12 @@ Cog
 	{
 		var MaxHealth = 25
 		var TimeBetweenAttacks = 0.200000003
+		var WinLevel = "5cb99efae8005657:YayYouWin.Level"
 	}
 	BossShoot 
 	{
 		var ArchetypeToSpawn = "5cd419fc4df93fda:EnemyProjectile"
 		var TimeTillShoot = 1.5
-		var Target = CogPath
-		{
-			var Path = ""
-			var ErrorOnResolveToNull = false
-			var ErrorOnPathCantCompute = false
-			var ErrorOnDirectLinkFail = false
-			var UpdateCogOnPathChange = true
-			var UpdatePathOnCogChange = true
-			var UpdateCogOnInitialize = true
-			var ResolvedNullErrorOccurred = false
-			var Cog = 4294967293
-			var PathPreference0 = CogPathPreference.CogRelative
-			var PathPreference1 = CogPathPreference.SpaceRelative
-			var PathPreference2 = CogPathPreference.Absolute
-		}
 	}
 	BoxCollider 
 	{
