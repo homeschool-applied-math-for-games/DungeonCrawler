@@ -63,11 +63,26 @@ Cog
 	Health 
 	{
 		var MaxHealth = 25
-		var TimeBetweenAttacks = 1
+		var TimeBetweenAttacks = 0.200000003
 	}
 	BossShoot 
 	{
 		var ArchetypeToSpawn = "5cd419fc4df93fda:EnemyProjectile"
 		var TimeTillShoot = 1.5
+		var Target = CogPath
+		{
+			var Path = ""
+			var ErrorOnResolveToNull = false
+			var ErrorOnPathCantCompute = false
+			var ErrorOnDirectLinkFail = false
+			var UpdateCogOnPathChange = true
+			var UpdatePathOnCogChange = true
+			var UpdateCogOnInitialize = true
+			var ResolvedNullErrorOccurred = false
+			var Cog = 4294967293
+			var PathPreference0 = CogPathPreference.CogRelative
+			var PathPreference1 = CogPathPreference.SpaceRelative
+			var PathPreference2 = CogPathPreference.Absolute
+		}
 	}
 }

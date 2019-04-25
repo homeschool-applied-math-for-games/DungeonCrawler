@@ -63,6 +63,6 @@ Cog
 	Health 
 	{
 		var MaxHealth = 10
-		var TimeBetweenAttacks = 1
+		var TimeBetweenAttacks = 0.200000003
 	}
 }
