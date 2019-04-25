@@ -1,5 +1,9 @@
-// WARNING! For this script to resolve collisions properly, the collider on the 
-// object must be slightly smaller than the space the object actually occupies.
+// //////////////////////////////////////////////////////////////////////////////////////
+// File: GridMovement.z                                                                //
+// Author: Jeremy Kings                                                                //
+// WARNING! For this script to resolve collisions properly, the collider on the        //
+// object may need to be slightly smaller than the space the object actually occupies. //
+/////////////////////////////////////////////////////////////////////////////////////////
 
 enum FacingDirection
 {
